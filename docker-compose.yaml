@@ -1,0 +1,35 @@
+#Configuring the 2 databases or PostgreSQL instances 
+
+version: '3.8'
+
+services:
+  # First database - holds raw e-commerce data
+  postgres_source:
+    image: postgres:15
+    container_name: etl_source_db
+    environment:
+      POSTGRES_USER: etl_user
+      POSTGRES_PASSWORD: etl_password
+      POSTGRES_DB: ecommerce_source
+    ports:
+      - "5432:5432"  # Access at localhost:5432
+    volumes:
+      - postgres_source_data:/var/lib/postgresql/data  # Persist data
+
+  # Second database - holds cleaned final data
+  postgres_target:
+    image: postgres:15
+    container_name: etl_target_db
+    environment:
+      POSTGRES_USER: etl_user
+      POSTGRES_PASSWORD: etl_password
+      POSTGRES_DB: data_warehouse
+    ports:
+      - "5433:5432"  # Access at localhost:5433
+    volumes:
+      - postgres_target_data:/var/lib/postgresql/data
+
+# Docker creates these storage locations
+volumes:
+  postgres_source_data:
+  postgres_target_data:

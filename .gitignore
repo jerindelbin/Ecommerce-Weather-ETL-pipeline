@@ -1,0 +1,15 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# Data files
+data/raw/*.csv
+data/logs/*.log
+
+# OS
+.DS_Store
+Thumbs.db
