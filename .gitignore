@@ -1,15 +1,29 @@
-# Secrets
+# Virtual environment
+venv/
+
+# Environment variables (NEVER commit this!)
 .env
 
-# Python
+# Python cache
 __pycache__/
 *.pyc
-venv/
+*.pyo
+*.pyd
+
+# Logs
+data/logs/*.log
 
 # Data files
 data/raw/*.csv
-data/logs/*.log
+data/sample_data/*
+
+# IDE
+.vscode/
+.idea/
 
 # OS
 .DS_Store
 Thumbs.db
+
+# Docker volumes
+postgres_data/
